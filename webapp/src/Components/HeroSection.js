@@ -1,25 +1,26 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { Paper } from '@mui/material';
+import styled from '@emotion/styled';
+import { Button } from '@mui/base';
+import { HeroBox, HeroGridLeft, HeroGridRight} from './StyledElements';
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 
 export default function HeroSection() {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        '& > :not(style)': {
-          m: 1,
-          width: 1500,
-          height: 1800,
-          textAlign: 'center',
-          mx: 'auto',
-        },
-      }}
-    >
-        <Paper sx={{ m: -225 }}>
-            <h1> Welcome to my Website.</h1>
-        </Paper>
-    </Box>
+    <HeroBox>
+      <Grid2 container spacing={2}>
+        <Grid2 xs={8}>
+          <HeroGridLeft>
+            Welcome to my Website!
+          </HeroGridLeft>
+        </Grid2>
+        <Grid2 xs={4}>
+          <HeroGridRight>
+            Home of my project, blog, and more. Stay awhile and listen!
+          </HeroGridRight>
+        </Grid2>
+      </Grid2>
+    </HeroBox>
   );
 }
