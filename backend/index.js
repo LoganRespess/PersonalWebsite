@@ -1,9 +1,14 @@
+require('dotenv').config();
 var express = require('express');
 const app = express();
-const port = 3500;
+const connectDB = require('./Config/DBConnection')
+const mongoose = require('mongoose')
 
-app.get('/', (req, res) => {
-    res.send('Howdy Bitch');
+
+//connect to DB
+connectDB();
+
+mongoose.connection.once('open', () => {
+    console.log("Connected to Database");
+    app.listen(process.env.PORT, () => console.log("listening on port " + process.env.PORT))
 })
-
-app.listen(port, () => console.log("listening on port " + port))
